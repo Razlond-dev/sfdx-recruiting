@@ -1,0 +1,47 @@
+<template>
+  <div data-id="modal">
+  <section aria-labelledby="modal-heading-01" aria-modal="true"
+    aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+    <div class="slds-modal__container">
+      <header class="slds-modal__header close__container">
+        <div class="modal__container" onclick={handleBack}>&#10006;</div>
+        <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">{labels.New_Candidate_Form_text}</h2>
+      </header>
+      <div class="slds-modal__content slds-var-p-around_medium" id="modal-content-id-1">
+        <lightning-record-edit-form onerror={handleCandidateFormError} object-api-name={candidateObjectApiName} data-id="candidateForm" onsuccess={handleCandidateFormSuccess}>
+          <template for:each={candidateFields} for:item="field">
+            <lightning-input-field key={field} field-name={field}>
+            </lightning-input-field>
+          </template>
+        </lightning-record-edit-form>
+        <template if:false={showJobAppForm}>
+          <div class="slds-align_absolute-center">
+            <lightning-button class="slds-var-m-top_small slds-align_absolute-center" onclick={handleShowJobAppForm} label={labels.Add_Job_Application}></lightning-button>
+          </div>
+        </template>
+        <template if:true={showJobAppForm}>
+          <div class="slds-var-p-around_medium slds-align_absolute-center slds-text-heading_medium">{labels.Job_Application_for_the_Candidate}</div>
+          <div class="slds-align_absolute-center">
+            <lightning-button class="slds-var-m-top_small" onclick={handleHideJobAppForm} label={labels.Remove_Job_Application}></lightning-button>
+          </div>
+          <lightning-record-edit-form onerror={handleJobAppFormError} object-api-name={jobApplicationObjectApiName} data-id="jobAppForm" onsuccess={handleJobAppFormSuccess}>
+            <lightning-input-field class="slds-hide" field-name={candidateField} value={candidateId}>
+            </lightning-input-field>
+            <template for:each={jobApplicationRequiredFields} for:item="field">
+              <lightning-input-field key={field} required field-name={field}>
+              </lightning-input-field>
+            </template>
+          </lightning-record-edit-form>
+        </template>
+      </div>
+      <footer class="slds-modal__footer">
+        <lightning-button label={labels.Back_text} variant="neutral" title="Non-primary action" onclick={handleBack} class="slds-var-m-left_x-small">
+        </lightning-button>
+        <lightning-button label={labels.Save_text} variant="brand" title="Non-primary action" onclick={handleSave} class="slds-var-m-left_x-small">
+        </lightning-button>
+      </footer>
+    </div>
+  </section>
+  <div class="slds-backdrop slds-backdrop_open"></div>
+</div>
+</template>

@@ -1,0 +1,18 @@
+<template>
+    <lightning-card class="background" variant="Narrow" title="Position Records" icon-name="standard:contact">
+        <template if:true={data}>
+            <lightning-combobox style="width: 20%; margin-left: 10px;" name="Status" label="Status"
+                value={selectedStatus} placeholder="Select Status" options={filterOptions}
+                onchange={handleSelectedStatusChange}></lightning-combobox>
+            <c-custom-data-table class="background tableBack" draft-values={draftValues2} key-field="Id" data={data}
+                columns={columns} onpicklistchanged={handlePicklistChanged} hide-checkbox-column>
+            </c-custom-data-table>
+            <div class="slds-var-m-top_small">
+                <lightning-button label={saveLabel} title="Non-primary action" onclick={handleSave}
+                    class="button slds-var-m-left_x-small"></lightning-button>
+            </div>
+            <c-table-pagination onpagination={handlePagination} records-per-page={recordsPerPage}
+                total-records={totalRecords}></c-table-pagination>
+        </template>
+    </lightning-card>
+</template>

@@ -1,0 +1,14 @@
+:host {
+  --background-color: white;
+}
+
+.background {
+  background-color: var(--background-color);
+  border-radius: 10px;
+}
+
+.label-text {
+  font-weight: bold;
+  font-size: 12px;
+  margin: 4px 0;
+}

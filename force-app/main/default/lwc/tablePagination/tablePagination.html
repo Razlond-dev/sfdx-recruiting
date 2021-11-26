@@ -1,0 +1,18 @@
+<template>
+  <div class="slds-align_absolute-center">
+    <div>
+      <lightning-button disabled variant="neutral" title="previous" class="button slds-float_left" label={previousLabel}
+        onclick={handleClick}></lightning-button>
+      <template if:true={totalRecords}>
+        <lightning-button-group>
+          <template for:each={pageLinks} for:item="page">
+            <lightning-button class="button" style="padding: 0 2px;" variant="brand" key={page} label={page} onclick={handlePageClick}>
+            </lightning-button>
+          </template>
+        </lightning-button-group>
+      </template>
+      <lightning-button variant="neutral" title="next" class="button slds-float_right" label={nextLabel} onclick={handleClick}>
+      </lightning-button>
+    </div>
+  </div>
+</template>

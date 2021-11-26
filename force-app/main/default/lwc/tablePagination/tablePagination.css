@@ -1,0 +1,5 @@
+.button {
+  --sds-c-button-color-background:var(--button-color);
+  --sds-c-button-neutral-color-background:var(--button-color);
+  --sds-c-button-brand-color-background:var(--button-color);
+}

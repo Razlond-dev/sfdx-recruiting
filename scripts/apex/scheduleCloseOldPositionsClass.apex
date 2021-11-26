@@ -1,0 +1,2 @@
+CloseOldPositionsScheduled scheduleableClass = new CloseOldPositionsScheduled();
+String jobID = System.schedule('Close old positions', CloseOldPositionsScheduled.DAILY_MIDNIGHT_INTERVAL, scheduleableClass);

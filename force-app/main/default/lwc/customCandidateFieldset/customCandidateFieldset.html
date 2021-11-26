@@ -1,0 +1,35 @@
+<template>
+  <div>
+    <lightning-combobox style="width: 20%; margin-left: 10px;" name="FieldSets" label={labels.Field_Sets}
+      value={selectedFieldSet} options={listOptions}
+      onchange={handleSelectedFieldsetChange}></lightning-combobox>
+  </div>
+  <div class="slds-var-m-vertical_medium">
+    <lightning-button label={labels.Save_text} title="Non-primary action" onclick={handleSave} class="slds-var-m-left_x-small">
+    </lightning-button>
+  </div>
+  <template if:true={fieldSetMembers}>
+    <table style="width: 700px;" class="slds-table">
+      <thead>
+        <tr>
+          <th>{labels.Field_API_Name}</th>
+          <th>{labels.Field_Label}</th>
+          <th>{labels.Field_Type}</th>
+          <th>{labels.Required_text}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <template for:each={fieldSetMembers} for:item="field">
+          <tr key={field.fieldAPIName}>
+            <td>{field.fieldAPIName}</td>
+            <td>{field.fieldLabel}</td>
+            <td>{field.fieldType}</td>
+            <td>
+              <lightning-input type="checkbox" name="isRequired" checked={field.isRequired} disabled></lightning-input>
+            </td>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+  </template>
+</template>

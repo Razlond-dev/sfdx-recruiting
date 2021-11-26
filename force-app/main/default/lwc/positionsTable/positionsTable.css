@@ -1,0 +1,23 @@
+:host {
+  --background-color: white;
+  --button-color: white;
+  --link-color: white;
+}
+
+.background {
+  --sds-c-card-color-background:var(--background-color);
+  background-color: var(--lwc-account);
+}
+
+.button {
+  --sds-c-button-color-background:var(--button-color);
+  --sds-c-button-neutral-color-background:var(--button-color);
+}
+
+table {
+  background-color: black;
+}
+
+.slds-table tr {
+  background-color: black;
+}

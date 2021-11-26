@@ -1,0 +1,11 @@
+.close__container {
+  position: relative;
+}
+
+.modal__container {
+  position: absolute;
+  cursor: pointer;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+}

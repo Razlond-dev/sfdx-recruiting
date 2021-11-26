@@ -1,0 +1,23 @@
+<apex:page standardController="Job_application__c" recordSetVar="job_apps">
+  <style type="text/css">
+    table, .pbBody, .bPageBlock, .headerRow { background-color: {!$Setup.Color_themes__c.Background_Color__c} !important }
+    input.btn { background: {!$Setup.Color_themes__c.Button_Color__c} !important }
+    a { color: {!$Setup.Color_themes__c.Link_Color__c} !important }
+    </style>
+  <apex:pageBlock id="block1">
+    <apex:form>
+      <apex:pageBlockTable id="job_app_list" value="{! job_apps }" var="ja">
+        <apex:column headerValue="{!$Label.Job_Application_Id}">
+          <apex:outputLink value="/{!ja.id}">{!ja.Name}</apex:outputLink>
+        </apex:column>
+        <apex:column value="{! ja.Average_Grade__c}" />
+        <apex:column value="{! ja.CV__c}" />
+        <apex:column value="{! ja.Stage__c}" />
+        <apex:column value="{! ja.candidate__c}" />
+        <apex:column value="{! ja.candidate__r.email__c}" />
+        <apex:column value="{! ja.position__c}" />
+        <apex:column value="{! ja.position__r.Exp_Level__c}" />
+      </apex:pageBlockTable>
+    </apex:form>
+  </apex:pageBlock>
+</apex:page>

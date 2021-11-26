@@ -1,0 +1,40 @@
+<apex:page controller="FilteredPositionsCtrl">
+  <style type="text/css">
+    table, .pbBody, .bPageBlock, .headerRow { background-color: {!$Setup.Color_themes__c.Background_Color__c} !important }
+    input.btn { background: {!$Setup.Color_themes__c.Button_Color__c} !important }
+    {}
+    </style>
+  <apex:form>
+    <apex:selectList id="searchStatus" value="{! selectedStatus}" size="1">
+      <apex:selectOptions value="{! Statuses}" id="field" />
+      <apex:actionSupport event="onchange" reRender="tableData" action="{! filterRecords}" />
+    </apex:selectList>
+
+    <div style="width: 800px;">
+      <apex:pageblock id="tableData">
+        <apex:pageMessages id="messages"></apex:pageMessages>
+        <apex:pageblockTable value="{! positionList}" var="obj">
+          <apex:column value="{!obj.name}" />
+          <apex:column headerValue="{!$ObjectType.Position__c.fields.Status__c.Label}">
+            <apex:inputField required="false" value="{! obj.status__c}" />
+          </apex:column>
+          <apex:column value="{!obj.opened_at__c}" />
+          <apex:column value="{!obj.closed_at__c}" />
+          <apex:column headerValue="{!$ObjectType.Position__c.fields.min_salary__c.Label}">
+            <apex:outputText value="{0, number}">
+              {! USER_CURRENCY} &nbsp;
+              <apex:param value="{!obj.min_salary__c}" />
+            </apex:outputText>
+          </apex:column>
+          <apex:column headerValue="{!$ObjectType.Position__c.fields.max_salary__c.Label}">
+            <apex:outputText value="{0, number}">
+              {! USER_CURRENCY} &nbsp;
+              <apex:param value="{!obj.max_salary__c}" />
+            </apex:outputText>
+          </apex:column>
+        </apex:pageblockTable>
+        <apex:commandButton reRender="tableData" action="{!save}" value="{!$Label.Save_text}" />
+      </apex:pageblock>
+    </div>
+  </apex:form>
+</apex:page>

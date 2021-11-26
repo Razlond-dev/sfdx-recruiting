@@ -1,0 +1,23 @@
+<template>
+  <div class="slds-size_1-of-5 slds-align_absolute-center background">
+    <div class="slds-size_3-of-4" style="position: relative;">
+      <div class="slds-text-heading_medium">{customThemeTitleLabel}</div>
+      <p class="label-text">{backgroundColorLabel}</p>
+      <lightning-input variant="label-hidden" type="text" onblur={handleBackgroundColorChange} value={backgroundColor}
+        minlength="4" maxlength="7">
+      </lightning-input>
+      <p class="label-text">{buttonColorLabel}</p>
+      <lightning-input variant="label-hidden" type="text" onblur={handleButtonColorChange} value={buttonColor}
+        minlength="4" maxlength="7">
+      </lightning-input>
+      <p class="label-text">{linkColorLabel}</p>
+      <lightning-input variant="label-hidden" type="text" onblur={handleLinkColorChange} value={linkColor}
+        minlength="4" maxlength="7">
+      </lightning-input>
+      <div class="slds-var-m-vertical_small slds-align_absolute-center">
+        <lightning-button disabled={inputsHaveError} class="button" onclick={handleSave} variant="brand" title={saveLabel} label={saveLabel}>
+        </lightning-button>
+      </div>
+    </div>
+  </div>
+</template>
